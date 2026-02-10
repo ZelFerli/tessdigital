@@ -1,174 +1,215 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesseract Digital | Strategy, Content, Analytics</title>
-    <!-- Modern font import -->
+    <title>Tesseract Digital | Strategy • Content • Analytics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #111111;
+            --text-muted: #555555;
+            --accent: #000000; /* Sophisticated monochrome look */
+            --blue: #0052ff;
+            --border: #e5e5e5;
+            --max-width: 1100px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.03em;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 10rem 0 6rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-subtext {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            font-weight: 300;
+        }
+
+        /* Grid Section */
+        .section {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--blue);
+            margin-bottom: 3rem;
+            display: block;
+            font-weight: 700;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* CTA */
+        .cta-block {
+            background: #f9f9f9;
+            padding: 5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--text);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            padding: 4rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 6rem 0 4rem; }
+            .cta-block { padding: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
+<body>
 
-<header>
-  <div class="container">
-    <nav class="nav">
-      <a class="brand" href="index.html">Tesseract Digital</a>
-      <div class="navlinks">
-        <a href="services.html">Services</a>
-        <a href="#approach">Approach</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </div>
-</header>
+    <div class="container">
+        <nav>
+            <a href="#" class="logo">TESSERACT DIGITAL</a>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="mailto:hello@tesseractdigital.org">Contact</a>
+            </div>
+        </nav>
 
-<main class="container">
-  <div class="kicker">Boutique consulting for growth</div>
-  <h1>Strategy that ships. Content that converts. Analytics that guides.</h1>
-  <p class="lede">
-    We help small businesses and agencies turn scattered efforts into a clear plan,
-    clean execution, and a decision loop you can trust.
-  </p>
+        <section class="hero">
+            <h1>Strategy, content, and analytics for the digital age.</h1>
+            <p class="hero-subtext">We help organizations navigate complex digital landscapes with senior-level expertise in content architecture and data-driven insights.</p>
+        </section>
 
-  <div class="actions">
-    <a class="btn primary" href="mailto:hello@tesseractdigital.com?subject=Discovery%20call%20-%20Tesseract%20Digital">Email for a discovery call</a>
-    <a class="btn" href="services.html">Explore services</a>
-  </div>
+        <section class="section" id="services">
+            <span class="section-title">Expertise</span>
+            <div class="grid">
+                <div class="service-card">
+                    <h3>Content Strategy</h3>
+                    <p>Designing scalable content systems that speak to humans and rank for machines.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Data Analytics</h3>
+                    <p>Turning raw noise into actionable signals to drive business growth and user retention.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Digital Transformation</h3>
+                    <p>Modernizing legacy workflows for a boutique, high-efficiency digital presence.</p>
+                </div>
+            </div>
+        </section>
 
-  <hr class="hr" />
+        <section class="cta-block">
+            <h2>Ready to start?</h2>
+            <p>Let's build something precise.</p>
+            <a href="mailto:hello@tesseractdigital.org" class="btn">Get in touch</a>
+        </section>
 
-  <section class="section" aria-label="Value points">
-    <h2>Lean, senior-level consulting. Built for momentum.</h2>
-
-    <div class="checklist">
-      <div class="check">
-        <div class="tick">✓</div>
-        <div>
-          <b>Sharper positioning</b>
-          <span>A message that’s easy to repeat and easy to buy.</span>
-        </div>
-      </div>
-      <div class="check">
-        <div class="tick">✓</div>
-        <div>
-          <b>Less chaos</b>
-          <span>Simple content systems your team can actually run.</span>
-        </div>
-      </div>
-      <div class="check">
-        <div class="tick">✓</div>
-        <div>
-          <b>Better decisions</b>
-          <span>Reporting that answers “what do we do next?”</span>
-        </div>
-      </div>
+        <footer>
+            <p>&copy; 2024 Tesseract Digital. All rights reserved.</p>
+        </footer>
     </div>
-  </section>
-
-  <hr class="hr" />
-
-  <!-- Shortened Services teaser -->
-  <section class="section" id="services" aria-label="Services">
-    <h2>Services</h2>
-    <p>Choose one engagement or combine them. You’ll get clarity, shipped work, and measurable outcomes.</p>
-
-    <div class="grid">
-      <article class="card half">
-        <div class="title">
-          <h3>White papers</h3>
-          <div class="meta">Authority assets</div>
-        </div>
-        <p>Research-backed structure and writing that builds trust and moves buyers.</p>
-      </article>
-
-      <article class="card half">
-        <div class="title">
-          <h3>Content systems</h3>
-          <div class="meta">Editorial strategy</div>
-        </div>
-        <p>Pillars, calendars, templates, and workflows that keep quality high.</p>
-      </article>
-
-      <article class="card half">
-        <div class="title">
-          <h3>Static web design</h3>
-          <div class="meta">Fast pages</div>
-        </div>
-        <p>Clean UX + strong copy, built as simple static pages for speed and stability.</p>
-      </article>
-
-      <article class="card half">
-        <div class="title">
-          <h3>Analytics</h3>
-          <div class="meta">Dashboards</div>
-        </div>
-        <p>Tracking audits, KPI design, reporting, and insight summaries for decisions.</p>
-      </article>
-    </div>
-
-    <div class="actions" style="margin-top:16px">
-      <a class="btn" href="services.html">See full service details</a>
-    </div>
-  </section>
-
-  <hr class="hr" />
-
-  <section class="section" id="approach" aria-label="Approach">
-    <h2>Approach</h2>
-    <p>
-      Boutique, senior-level consulting with a bias toward execution.
-      We keep scope lean, cycles short, and documentation clear.
-    </p>
-
-    <div class="grid">
-      <div class="card third">
-        <div class="title"><h3>Start with constraints</h3><div class="meta">Goals + reality</div></div>
-        <p>We define what success means and what you can actually support operationally.</p>
-      </div>
-      <div class="card third">
-        <div class="title"><h3>Ship leverage first</h3><div class="meta">Fast wins</div></div>
-        <p>We deliver the highest-impact work early so momentum becomes a feature.</p>
-      </div>
-      <div class="card third">
-        <div class="title"><h3>Build the loop</h3><div class="meta">Measurement</div></div>
-        <p>KPIs and reporting that make the next decision obvious, not emotional.</p>
-      </div>
-    </div>
-  </section>
-
-  <hr class="hr" />
-
-  <section class="section" id="contact" aria-label="Contact">
-    <h2>Contact</h2>
-    <p>
-      Send a short note with: what you’re building, what’s stuck, and what “better” looks like.
-      We’ll reply with a simple recommendation and next steps.
-    </p>
-
-    <div class="actions">
-      <a class="btn primary" href="mailto:hello@tesseractdigital.com?subject=Project%20inquiry%20-%20Tesseract%20Digital">Email hello@tesseractdigital.com</a>
-      <a class="btn" href="services.html">See services</a>
-    </div>
-
-    <div class="pillrow" aria-label="Response time">
-      <span class="pill">Typical reply: within 1 to 2 business days</span>
-      <span class="pill">Scope-first, no fluff</span>
-      <span class="pill">Documentation included</span>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="container">
-    <div class="footerline">
-      <div>© 2026 Tesseract Digital. All rights reserved.</div>
-      <a class="smalllink" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Back to top</a>
-    </div>
-  </div>
-</footer>
 
 </body>
 </html>
