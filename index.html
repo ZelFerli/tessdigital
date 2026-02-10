@@ -1,569 +1,172 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Tesseract Digital | Strategy, Content, Analytics</title>
-  <meta name="description" content="Boutique consulting for content, web, and analytics. Clear strategy, clean execution, measurable growth." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg:#070711;
-      --panel:#0d0d1a;
-      --card: rgba(233,233,242,.05);
-      --card2: rgba(7,7,17,.40);
-      --text:#e9e9f2;
-      --muted:rgba(233,233,242,.72);
-      --muted2:rgba(233,233,242,.56);
-      --line:rgba(233,233,242,.12);
-      --accent:#ff6b9d;
-      --accent2:#c44569;
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-      --shadow2: 0 10px 35px rgba(0,0,0,.35);
-      --radius: 18px;
-      --radius2: 26px;
-      --max: 1180px;
-    }
-
-    *{ box-sizing: border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(1000px 600px at 15% 0%, rgba(255,107,157,.14), transparent 55%),
-        radial-gradient(900px 500px at 90% 12%, rgba(196,69,105,.12), transparent 55%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x:hidden;
-    }
-
-    a{ color:inherit; text-decoration:none; }
-    a:focus-visible, button:focus-visible{
-      outline: 2px solid rgba(255,107,157,.9);
-      outline-offset: 3px;
-      border-radius: 12px;
-    }
-
-    .container{
-      width: min(var(--max), calc(100% - 48px));
-      margin: 0 auto;
-    }
-
-    /* Clean header (sticky so it never covers content) */
-    header{
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(7,7,17,.80);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding: 10px 0;
-      gap: 14px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      min-width: 220px;
-    }
-
-    /* KEEP YOUR MOVING ICON */
-    .logo-icon{
-      width: 30px;
-      height: 30px;
-      animation: rotate3d 20s linear infinite;
-      flex: 0 0 auto;
-    }
-    @keyframes rotate3d{
-      0%{ transform: rotateY(0deg) rotateX(0deg); }
-      100%{ transform: rotateY(360deg) rotateX(360deg); }
-    }
-
-    .brand-name{
-      letter-spacing: .18em;
-      font-weight: 600;
-      font-size: .9rem;
-      white-space: nowrap;
-    }
-
-    nav ul{
-      display:flex;
-      list-style:none;
-      padding:0;
-      margin:0;
-      gap: 14px;
-      align-items:center;
-    }
-
-    .nav a{
-      color: var(--muted);
-      font-weight: 600;
-      font-size: .92rem;
-      padding: 8px 8px;
-      border-radius: 10px;
-      transition: color .2s ease, text-decoration-color .2s ease;
-      text-decoration: underline;
-      text-decoration-color: transparent;
-      text-underline-offset: 6px;
-    }
-    .nav a:hover{
-      color: var(--text);
-      text-decoration-color: rgba(255,107,157,.75);
-    }
-
-    .menu-btn{ display:none; }
-
-    /* Page layout: hero on top, then sections side-by-side */
-    main{
-      padding: 26px 0 54px;
-    }
-
-    .hero{
-      padding: 30px 0 22px;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 18px;
-      align-items:start;
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 7px 11px;
-      border: 1px solid rgba(255,107,157,.28);
-      background: rgba(255,107,157,.08);
-      border-radius: 999px;
-      color: var(--muted);
-      font-weight: 700;
-      font-size: .82rem;
-      letter-spacing: .02em;
-    }
-    .dot{
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(255,107,157,.10);
-    }
-
-    h1{
-      margin: 14px 0 10px;
-      font-size: clamp(2.0rem, 3.6vw, 3.1rem);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-    }
-
-    .lead{
-      margin: 0 0 16px;
-      color: var(--muted);
-      font-size: clamp(1.05rem, 1.35vw, 1.16rem);
-      max-width: 62ch;
-    }
-
-    .hero-actions{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items:center;
-      margin-top: 10px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(233,233,242,.14);
-      background: rgba(233,233,242,.06);
-      color: var(--text);
-      font-weight: 700;
-      font-size: .95rem;
-      transition: transform .15s ease, border-color .2s ease, background .2s ease;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(233,233,242,.085);
-      border-color: rgba(255,107,157,.28);
-    }
-
-    .btn-primary{
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 12px 28px rgba(255,107,157,.18);
-    }
-    .btn-primary:hover{
-      background: linear-gradient(135deg, var(--accent2) 0%, var(--accent) 100%);
-    }
-
-    .micro{
-      color: var(--muted2);
-      font-size: .95rem;
-      margin-top: 10px;
-    }
-
-    .hero-card{
-      background: linear-gradient(180deg, rgba(233,233,242,.06), rgba(233,233,242,.03));
-      border: 1px solid var(--line);
-      border-radius: var(--radius2);
-      padding: 16px;
-      box-shadow: var(--shadow2);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(600px 220px at 30% 10%, rgba(255,107,157,.18), transparent 55%),
-        radial-gradient(500px 220px at 80% 30%, rgba(196,69,105,.12), transparent 60%);
-      pointer-events:none;
-    }
-    .hero-card > *{ position: relative; }
-
-    .bullets{
-      margin:0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap: 10px;
-    }
-    .bullets li{
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
-      padding: 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(233,233,242,.10);
-      background: rgba(7,7,17,.35);
-    }
-    .check{
-      width: 22px; height: 22px; border-radius: 8px;
-      background: rgba(255,107,157,.18);
-      border: 1px solid rgba(255,107,157,.40);
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      flex: 0 0 auto;
-      margin-top: 1px;
-      font-weight: 900;
-      color: var(--accent);
-      font-size: 13px;
-      line-height: 1;
-    }
-    .bullets strong{ display:block; font-size: .95rem; }
-    .bullets span.txt{ color: var(--muted); font-size: .92rem; display:block; margin-top: 2px; }
-
-    /* Side-by-side main sections */
-    .panel-grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 16px;
-      align-items: start;
-      margin-top: 16px;
-    }
-
-    .panel{
-      border: 1px solid var(--line);
-      background: rgba(233,233,242,.03);
-      border-radius: var(--radius2);
-      padding: 18px;
-      box-shadow: var(--shadow2);
-    }
-
-    .panel h2{
-      margin: 0 0 10px;
-      font-size: 1.25rem;
-      letter-spacing: -0.01em;
-    }
-    .panel p{
-      margin: 0 0 12px;
-      color: var(--muted);
-    }
-
-    .services-grid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .service{
-      border: 1px solid rgba(233,233,242,.12);
-      background: rgba(7,7,17,.35);
-      border-radius: var(--radius);
-      padding: 14px;
-      transition: transform .15s ease, border-color .2s ease, background .2s ease;
-    }
-    .service:hover{
-      transform: translateY(-2px);
-      border-color: rgba(255,107,157,.28);
-      background: rgba(233,233,242,.055);
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(233,233,242,.12);
-      background: rgba(7,7,17,.35);
-      color: var(--muted);
-      font-weight: 700;
-      font-size: .80rem;
-    }
-
-    .service h3{
-      margin: 10px 0 6px;
-      font-size: 1.02rem;
-      letter-spacing: -0.01em;
-    }
-    .service p{
-      margin: 0;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    /* Contact panel */
-    .contact-card{
-      border-radius: var(--radius2);
-      padding: 18px;
-      border: 1px solid rgba(255,107,157,.22);
-      background:
-        radial-gradient(700px 260px at 20% 0%, rgba(255,107,157,.18), transparent 55%),
-        radial-gradient(700px 260px at 85% 25%, rgba(196,69,105,.14), transparent 55%),
-        rgba(233,233,242,.03);
-      box-shadow: var(--shadow2);
-    }
-
-    .kpi-list{
-      margin: 12px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-    .kpi-list li{ margin: 6px 0; }
-
-    footer{
-      border-top: 1px solid var(--line);
-      color: var(--muted2);
-      padding: 20px 0;
-      margin-top: 26px;
-    }
-    .footer-row{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap: 12px;
-      flex-wrap:wrap;
-      font-size: .92rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .panel-grid{ grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px){
-      .services-grid{ grid-template-columns: 1fr; }
-      .brand-name{ letter-spacing: .14em; }
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      html{ scroll-behavior:auto; }
-      .logo-icon{ animation:none; }
-      .service:hover, .btn:hover{ transform:none; }
-    }
-  </style>
+  <meta name="description" content="Boutique consulting for growth: strategy that ships, content that converts, analytics that guides." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <header>
-    <div class="container">
-      <div class="nav">
-        <a class="brand" href="#top" aria-label="Tesseract Digital home">
-          <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Outer cube -->
-            <path d="M50 10 L80 30 L80 70 L50 90 L20 70 L20 30 Z"
-                  fill="none"
-                  stroke="#ff6b9d"
-                  stroke-width="2"/>
-            <!-- Inner cube -->
-            <path d="M50 30 L65 40 L65 60 L50 70 L35 60 L35 40 Z"
-                  fill="none"
-                  stroke="#ff6b9d"
-                  stroke-width="2"/>
-            <!-- Connecting lines -->
-            <line x1="50" y1="10" x2="50" y2="30" stroke="#ff6b9d" stroke-width="1.5"/>
-            <line x1="80" y1="30" x2="65" y2="40" stroke="#ff6b9d" stroke-width="1.5"/>
-            <line x1="80" y1="70" x2="65" y2="60" stroke="#ff6b9d" stroke-width="1.5"/>
-            <line x1="50" y1="90" x2="50" y2="70" stroke="#ff6b9d" stroke-width="1.5"/>
-            <line x1="20" y1="70" x2="35" y2="60" stroke="#ff6b9d" stroke-width="1.5"/>
-            <line x1="20" y1="30" x2="35" y2="40" stroke="#ff6b9d" stroke-width="1.5"/>
-            <!-- Center point -->
-            <circle cx="50" cy="50" r="3" fill="#ff6b9d"/>
-          </svg>
-          <span class="brand-name">TESSERACT DIGITAL</span>
-        </a>
 
-        <nav aria-label="Primary">
-          <ul>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">Approach</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
+<header>
+  <div class="container">
+    <nav class="nav">
+      <a class="brand" href="index.html">Tesseract Digital</a>
+      <div class="navlinks">
+        <a href="services.html">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <div class="kicker">Boutique consulting for growth</div>
+  <h1>Strategy that ships. Content that converts. Analytics that guides.</h1>
+  <p class="lede">
+    We help small businesses and agencies turn scattered efforts into a clear plan,
+    clean execution, and a decision loop you can trust.
+  </p>
+
+  <div class="actions">
+    <a class="btn primary" href="mailto:hello@tesseractdigital.com?subject=Discovery%20call%20-%20Tesseract%20Digital">Email for a discovery call</a>
+    <a class="btn" href="services.html">Explore services</a>
+  </div>
+
+  <hr class="hr" />
+
+  <section class="section" aria-label="Value points">
+    <h2>Lean, senior-level consulting. Built for momentum.</h2>
+
+    <div class="checklist">
+      <div class="check">
+        <div class="tick">✓</div>
+        <div>
+          <b>Sharper positioning</b>
+          <span>A message that’s easy to repeat and easy to buy.</span>
+        </div>
+      </div>
+      <div class="check">
+        <div class="tick">✓</div>
+        <div>
+          <b>Less chaos</b>
+          <span>Simple content systems your team can actually run.</span>
+        </div>
+      </div>
+      <div class="check">
+        <div class="tick">✓</div>
+        <div>
+          <b>Better decisions</b>
+          <span>Reporting that answers “what do we do next?”</span>
+        </div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div>
-            <div class="eyebrow"><span class="dot"></span> Boutique consulting for growth</div>
-            <h1>Strategy that ships. Content that converts. Analytics that guides.</h1>
-            <p class="lead">
-              We help small businesses and agencies turn scattered efforts into a clear plan,
-              clean execution, and a decision loop you can trust.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="mailto:hello@tesseractdigital.com?subject=Discovery%20Call%20-%20Tesseract%20Digital">Email for a discovery call</a>
-              <a class="btn" href="#services">Explore services</a>
-            </div>
-            <div class="micro">Lean, senior-level consulting. Built for momentum.</div>
-          </div>
+  <hr class="hr" />
 
-          <aside class="hero-card" aria-label="Quick outcomes">
-            <ul class="bullets">
-              <li>
-                <span class="check" aria-hidden="true">✓</span>
-                <div>
-                  <strong>Sharper positioning</strong>
-                  <span class="txt">A message that’s easy to repeat and easy to buy.</span>
-                </div>
-              </li>
-              <li>
-                <span class="check" aria-hidden="true">✓</span>
-                <div>
-                  <strong>Less chaos</strong>
-                  <span class="txt">Simple content systems your team can actually run.</span>
-                </div>
-              </li>
-              <li>
-                <span class="check" aria-hidden="true">✓</span>
-                <div>
-                  <strong>Better decisions</strong>
-                  <span class="txt">Reporting that answers “what do we do next?”</span>
-                </div>
-              </li>
-            </ul>
-          </aside>
+  <!-- Shortened Services teaser -->
+  <section class="section" id="services" aria-label="Services">
+    <h2>Services</h2>
+    <p>Choose one engagement or combine them. You’ll get clarity, shipped work, and measurable outcomes.</p>
+
+    <div class="grid">
+      <article class="card half">
+        <div class="title">
+          <h3>White papers</h3>
+          <div class="meta">Authority assets</div>
         </div>
+        <p>Research-backed structure and writing that builds trust and moves buyers.</p>
+      </article>
 
-        <!-- MAIN SECTIONS SIDE-BY-SIDE -->
-        <div class="panel-grid">
-          <!-- Services -->
-          <section id="services" class="panel" aria-label="Services">
-            <h2>Services</h2>
-            <p>Choose one engagement or combine them. You’ll get clarity, shipped work, and measurable outcomes.</p>
-
-            <div class="services-grid">
-              <article class="service">
-                <div class="pill">📄 White papers</div>
-                <h3>Authority assets for lead gen</h3>
-                <p>Research-backed structure and writing that builds trust and moves buyers.</p>
-              </article>
-
-              <article class="service">
-                <div class="pill">✍️ Content systems</div>
-                <h3>Editorial strategy without chaos</h3>
-                <p>Pillars, calendars, templates, and workflows that keep quality high.</p>
-              </article>
-
-              <article class="service">
-                <div class="pill">🎨 Static web design</div>
-                <h3>Fast pages that convert</h3>
-                <p>Clean UX + strong copy, built as simple static pages for speed and stability.</p>
-              </article>
-
-              <article class="service">
-                <div class="pill">📊 Analytics</div>
-                <h3>Dashboards you can act on</h3>
-                <p>Tracking audits, KPI design, reporting, and insight summaries for decisions.</p>
-              </article>
-            </div>
-          </section>
-
-          <!-- Contact + Approach -->
-          <section class="panel" aria-label="Approach and contact">
-            <section id="about" class="contact-card" aria-label="Approach">
-              <h2 style="margin:0 0 10px;">Approach</h2>
-              <p style="margin:0 0 10px; color: var(--muted);">
-                Boutique, senior-level consulting with a bias toward execution.
-                We keep scope lean, cycles short, and documentation clear.
-              </p>
-              <ul class="kpi-list">
-                <li>Start with goals and constraints</li>
-                <li>Ship the highest-leverage work first</li>
-                <li>Set up simple measurement (KPIs, dashboards)</li>
-              </ul>
-            </section>
-
-            <section id="contact" style="margin-top: 14px;">
-              <h2>Contact</h2>
-              <p>
-                Send a short note with: what you’re building, what’s stuck, and what “better” looks like.
-                We’ll reply with a simple recommendation and next steps.
-              </p>
-
-              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px;">
-                <a class="btn btn-primary"
-                   href="mailto:hello@tesseractdigital.com?subject=Discovery%20Call%20-%20Tesseract%20Digital&body=Hi%20Tesseract%20Digital%2C%0A%0AProject%3A%20%0AWhat%E2%80%99s%20stuck%3A%20%0AGoal%20%2F%20timeline%3A%20%0A%0ABest%2C%0A">
-                  Email hello@tesseractdigital.com
-                </a>
-                <a class="btn" href="#services">See services</a>
-              </div>
-
-              <div class="micro">Typical reply time: within 1 to 2 business days.</div>
-            </section>
-          </section>
+      <article class="card half">
+        <div class="title">
+          <h3>Content systems</h3>
+          <div class="meta">Editorial strategy</div>
         </div>
+        <p>Pillars, calendars, templates, and workflows that keep quality high.</p>
+      </article>
 
+      <article class="card half">
+        <div class="title">
+          <h3>Static web design</h3>
+          <div class="meta">Fast pages</div>
+        </div>
+        <p>Clean UX + strong copy, built as simple static pages for speed and stability.</p>
+      </article>
+
+      <article class="card half">
+        <div class="title">
+          <h3>Analytics</h3>
+          <div class="meta">Dashboards</div>
+        </div>
+        <p>Tracking audits, KPI design, reporting, and insight summaries for decisions.</p>
+      </article>
+    </div>
+
+    <div class="actions" style="margin-top:16px">
+      <a class="btn" href="services.html">See full service details</a>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <section class="section" id="approach" aria-label="Approach">
+    <h2>Approach</h2>
+    <p>
+      Boutique, senior-level consulting with a bias toward execution.
+      We keep scope lean, cycles short, and documentation clear.
+    </p>
+
+    <div class="grid">
+      <div class="card third">
+        <div class="title"><h3>Start with constraints</h3><div class="meta">Goals + reality</div></div>
+        <p>We define what success means and what you can actually support operationally.</p>
       </div>
-    </section>
-
-    <footer>
-      <div class="container">
-        <div class="footer-row">
-          <div>&copy; 2026 Tesseract Digital. All rights reserved.</div>
-          <a href="#top" style="color: var(--muted); text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 6px;"
-             onmouseover="this.style.textDecorationColor='rgba(255,107,157,.75)';"
-             onmouseout="this.style.textDecorationColor='transparent';">
-            Back to top
-          </a>
-        </div>
+      <div class="card third">
+        <div class="title"><h3>Ship leverage first</h3><div class="meta">Fast wins</div></div>
+        <p>We deliver the highest-impact work early so momentum becomes a feature.</p>
       </div>
-    </footer>
-  </main>
+      <div class="card third">
+        <div class="title"><h3>Build the loop</h3><div class="meta">Measurement</div></div>
+        <p>KPIs and reporting that make the next decision obvious, not emotional.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <section class="section" id="contact" aria-label="Contact">
+    <h2>Contact</h2>
+    <p>
+      Send a short note with: what you’re building, what’s stuck, and what “better” looks like.
+      We’ll reply with a simple recommendation and next steps.
+    </p>
+
+    <div class="actions">
+      <a class="btn primary" href="mailto:hello@tesseractdigital.com?subject=Project%20inquiry%20-%20Tesseract%20Digital">Email hello@tesseractdigital.com</a>
+      <a class="btn" href="services.html">See services</a>
+    </div>
+
+    <div class="pillrow" aria-label="Response time">
+      <span class="pill">Typical reply: within 1 to 2 business days</span>
+      <span class="pill">Scope-first, no fluff</span>
+      <span class="pill">Documentation included</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footerline">
+      <div>© 2026 Tesseract Digital. All rights reserved.</div>
+      <a class="smalllink" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Back to top</a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
