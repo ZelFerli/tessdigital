@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesseract Digital | Strategy • Content • Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --surface: #161618;
+            --text: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --accent: #3b82f6;
+            --border: #27272a;
+            --max-width: 1100px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 2rem; }
+
+        /* Navigation */
+        nav { padding: 4rem 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 100; }
+        
+        .brand {
+            display: flex; 
+            align-items: center; 
+            gap: 22px;
+            text-decoration: none; 
+            color: var(--text);
+            font-weight: 700; 
+            font-size: 1.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .tesseract-icon { 
+            width: 52px; 
+            height: 52px; 
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .cube { 
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            stroke: var(--accent); 
+            stroke-width: 2.2; 
+            fill: none; 
+            animation: rotate 12s linear infinite; 
+        }
+        .cube-inner { 
+            position: absolute; 
+            width: 50%; 
+            height: 50%; 
+            stroke: var(--text); 
+            stroke-width: 2; 
+            fill: none; 
+            animation: rotate-reverse 8s linear infinite; 
+        }
+
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes rotate-reverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text-muted); 
+            font-size: 0.85rem; 
+            font-weight: 500; 
+            letter-spacing: 0.05em;
+            text-transform: lowercase;
+            transition: color 0.2s; 
+            cursor: pointer;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+        /* Page Transitions */
+        .page { display: none; opacity: 0; transform: translateY(10px); transition: all 0.5s ease; }
+        .page.active { display: block; opacity: 1; transform: translateY(0); }
+
+        /* Hero & Sections */
+        .hero { padding: 6rem 0 4rem; }
+        h1 {
+            font-size: clamp(2.5rem, 7vw, 4.5rem); line-height: 1.05; font-weight: 700;
+            letter-spacing: -0.04em; margin-bottom: 2rem;
+            background: linear-gradient(180deg, #ffffff 30%, #444 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-subtext { font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: var(--text-muted); max-width: 800px; font-weight: 300; line-height: 1.5; }
+
+        .section { padding: 4rem 0 8rem; }
+        .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.35em; color: var(--accent); font-weight: 700; margin-bottom: 2rem; display: block; }
+        
+        /* About Page Specifics */
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; margin-top: 4rem; }
+        .about-main h2 { font-size: 3rem; letter-spacing: -0.03em; margin-bottom: 2rem; line-height: 1.1; }
+        .about-main p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem; font-weight: 300; }
+        
+        .location-list { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 1rem; 
+            margin-top: 2rem; 
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+        }
+        .location-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(39, 39, 42, 0.5);
+        }
+        .location-item span:first-child { color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; }
+        .location-item span:last-child { color: var(--text); font-weight: 600; }
+
+        /* Shared Grid & Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .card { background: var(--surface); padding: 3.5rem; border-radius: 24px; border: 1px solid var(--border); transition: all 0.4s ease; }
+        .card:hover { border-color: var(--accent); transform: translateY(-8px); }
+        .card h3 { font-size: 1.5rem; margin-bottom: 1.2rem; color: #fff; }
+        .card p { color: var(--text-muted); font-size: 1rem; }
+        
+        /* CTA */
+        .btn { display: inline-block; background: var(--text); color: var(--bg); padding: 1.2rem 3rem; text-decoration: none; border-radius: 14px; font-weight: 700; margin-top: 2.5rem; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .btn:hover { transform: scale(1.05); background: #fff; }
+
+        footer { padding: 6rem 0; text-align: center; color: var(--text-muted); font-size: 0.75rem; border-top: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.1em; }
+
+        @media (max-width: 900px) {
+            .about-content { grid-template-columns: 1fr; gap: 3rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <div onclick="showPage('home')" class="brand">
+                <div class="tesseract-icon">
+                    <svg class="cube" viewBox="0 0 100 100"><rect x="15" y="15" width="70" height="70" rx="4" /></svg>
+                    <svg class="cube-inner" viewBox="0 0 100 100"><rect x="25" y="25" width="50" height="50" rx="2" /></svg>
+                </div>
+                Tesseract Digital
+            </div>
+            <div class="nav-links">
+                <a onclick="showPage('home')" id="nav-home">Home</a>
+                <a onclick="showPage('about')" id="nav-about">Origins</a>
+                <a href="mailto:hello@tesseractdigital.org">Inquiry</a>
+            </div>
+        </nav>
+
+        <!-- HOME PAGE -->
+        <main id="page-home" class="page active">
+            <section class="hero">
+                <h1>Intelligence engineered for digital clarity.</h1>
+                <p class="hero-subtext">A specialized collective transforming chaotic data environments into high-performance digital ecosystems.</p>
+                <button class="btn" onclick="showPage('about')">Our Story</button>
+            </section>
+
+            <section class="section">
+                <span class="label">Core Capabilities</span>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Content Architecture</h3>
+                        <p>We design semantic models that ensure your information is machine-readable and human-centric.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Predictive Analytics</h3>
+                        <p>We build models that identify market intent before it converts, providing actionable intelligence.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ABOUT PAGE -->
+        <main id="page-about" class="page">
+            <section class="section">
+                <span class="label">The Origins</span>
+                <div class="about-content">
+                    <div class="about-main">
+                        <h2>United by a shared vision.</h2>
+                        <p>Tesseract Digital began as an informal network of independent practitioners. We realized that the most significant digital breakthroughs happened when high-level strategy met deep technical execution.</p>
+                        <p>We moved away from the monolithic agency model to create something more agile: a practitioner-led collective where the experts lead the projects.</p>
+                        <button class="btn" onclick="showPage('home')">View Capabilities</button>
+                    </div>
+                    <div>
+                        <p style="color: var(--text-muted); margin-bottom: 2rem;">Operating as a distributed team allows us to maintain a presence in key global markets while remaining focused on work that matters.</p>
+                        <span class="label" style="font-size: 0.6rem; margin-bottom: 1rem;">Primary Locations</span>
+                        <div class="location-list">
+                            <div class="location-item"><span>North America</span><span>Toronto</span></div>
+                            <div class="location-item"><span>Central Europe</span><span>Berlin</span></div>
+                            <div class="location-item"><span>Eurasia</span><span>Istanbul</span></div>
+                            <div class="location-item"><span>Southeast Asia</span><span>Bangkok</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Tesseract Digital. Founded in Toronto. Serving global markets.</p>
+        </footer>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+            });
+            
+            const target = document.getElementById('page-' + pageId);
+            target.classList.add('active');
+
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            const navLink = document.getElementById('nav-' + pageId);
+            if (navLink) navLink.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
