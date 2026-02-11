@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Philosophy & Approach | Tesseract Digital</title>
+    <title>Our Approach | Tesseract Digital</title>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -351,16 +351,16 @@
         <div class="container">
             <a href="/" class="logo">TESSERACT DIGITAL</a>
             <ul>
-                <li><a href="philosophy.html">Philosophy</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="/cdn-cgi/l/email-protection#335b565f5f5c73475640405641525047575a545a47525f1d5c4154">Contact</a></li>
+                <li><a href="https://tesseractdigital.org/approach.html">Our Approach</a></li>
+                <li><a href="https://tesseractdigital.org/about.html">About</a></li>
+                <li><a href="mailto:hello@tesseractdigital.org">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <section class="page-hero">
         <div class="container">
-            <div class="breadcrumb">HOME / PHILOSOPHY & APPROACH</div>
+            <div class="breadcrumb">HOME / OUR APPROACH</div>
             <h1>Complexity shouldn't be managed. It should be mastered.</h1>
             <p class="lead">In an era of algorithmic saturation, "digital presence" is no longer enough. Modern organizations require a tesseract-like approach—viewing problems from multiple dimensions simultaneously.</p>
         </div>
