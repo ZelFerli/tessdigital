@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Tesseract Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FFFFFF;
+            --accent: #00F0FF;
+            --secondary: #9CA3AF;
+            --bg: #0A0A0A;
+            --bg-elevated: #1A1A1A;
+            --border: #2A2A2A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Archivo', sans-serif;
+            background: var(--bg);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .logo::before {
+            content: '□';
+            color: var(--accent);
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+            display: inline-block;
+            animation: rotate3d 3s ease-in-out infinite;
+        }
+
+        @keyframes rotate3d {
+            0%, 100% {
+                transform: rotateY(0deg) rotateX(0deg);
+            }
+            25% {
+                transform: rotateY(180deg) rotateX(0deg);
+            }
+            50% {
+                transform: rotateY(180deg) rotateX(180deg);
+            }
+            75% {
+                transform: rotateY(0deg) rotateX(180deg);
+            }
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero */
+        .page-hero {
+            margin-top: 80px;
+            padding: 6rem 2rem 4rem;
+            background: var(--bg-elevated);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-hero .lead {
+            font-size: 1.35rem;
+            color: var(--secondary);
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 6rem 2rem;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--bg-elevated);
+        }
+
+        .content-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+        }
+
+        .content-section h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .content-section p {
+            font-size: 1.15rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--secondary);
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            padding: 2rem;
+            border-left: 3px solid var(--accent);
+            background: var(--bg);
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .value-card p {
+            font-size: 1.05rem;
+            color: var(--secondary);
+        }
+
+        /* Expertise Areas */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .expertise-item {
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            background: var(--bg);
+        }
+
+        .expertise-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .expertise-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .expertise-content p {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        /* Team Section */
+        .team-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .team-intro p {
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+
+        /* Locations Grid */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .location-card {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .location-card .city {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .location-card .region {
+            font-size: 1rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .location-card .timezone {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            padding: 0.5rem 1rem;
+            background: var(--bg-elevated);
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        /* CTA Section */
+        .cta-box {
+            background: linear-gradient(135deg, #000000 0%, #1A1A1A 100%);
+            color: white;
+            padding: 4rem;
+            text-align: center;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .cta-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-box p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: var(--bg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+        }
+
+        footer .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        footer p {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">TESSERACT DIGITAL</a>
+            <ul>
+                <li><a href="philosophy.html">Philosophy</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="/cdn-cgi/l/email-protection#bcd4d9d0d0d3fcc8d9cfcfd9cedddfc8d8d5dbd5c8ddd092d3cedb">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">HOME / ABOUT</div>
+            <h1>We solve technical problems with strategy in mind.</h1>
+            <p class="lead">Tesseract Digital started because we saw a gap between people who understand business and people who understand systems. We work to bridge that divide.</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="section-number">01 — ORIGIN</div>
+            <h2>Why We Exist</h2>
+            <p>Digital transformations fail more often than they should. Usually, it's not because of bad technology—it's because the people who understand the business don't speak the same language as the people who build the systems.</p>
+            
+            <p>We started Tesseract Digital to fix that. Our team has spent years building content systems, implementing analytics infrastructure, and designing semantic architectures for organizations of all sizes. We've seen what works and what doesn't.</p>
+
+            <p>Our approach is straightforward: design systems that make sense for your business, then build them properly. No buzzwords, no unnecessary complexity.</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="section-number">02 — EXPERTISE</div>
+            <h2>What We Do</h2>
+            <p>We work across the full spectrum of digital infrastructure—from technical foundations to how content is structured to analytics and prediction. This breadth helps us see connections that specialists might miss.</p>
+
+            <div class="expertise-grid">
+                <div class="expertise-item">
+                    <div class="expertise-icon">▣</div>
+                    <div class="expertise-content">
+                        <h3>Technical Architecture</h3>
+                        <p>Platform selection, system integration, data pipeline design, API architecture, and infrastructure optimization for enterprise-scale operations.</p>
+                    </div>
+                </div>
+
+                <div class="expertise-item">
+                    <div class="expertise-icon">▢</div>
+                    <div class="expertise-content">
+                        <h3>Semantic Systems</h3>
+                        <p>Knowledge graph construction, entity modeling, schema implementation, and structured data strategy for machine-readable content.</p>
+                    </div>
+                </div>
+
+                <div class="expertise-item">
+                    <div class="expertise-icon">◈</div>
+                    <div class="expertise-content">
+                        <h3>Analytics & Intelligence</h3>
+                        <p>Attribution modeling, predictive forecasting, custom visualization, data warehouse design, and algorithmic optimization frameworks.</p>
+                    </div>
+                </div>
+
+                <div class="expertise-item">
+                    <div class="expertise-icon">◉</div>
+                    <div class="expertise-content">
+                        <h3>Content Operations</h3>
+                        <p>Taxonomy design, metadata architecture, workflow automation, governance frameworks, and content-at-scale infrastructure.</p>
+                    </div>
+                </div>
+
+                <div class="expertise-item">
+                    <div class="expertise-icon">◐</div>
+                    <div class="expertise-content">
+                        <h3>AI Readiness</h3>
+                        <p>Data quality assessment, model integration planning, prompt engineering architecture, and organizational capability development.</p>
+                    </div>
+                </div>
+
+                <div class="expertise-item">
+                    <div class="expertise-icon">◧</div>
+                    <div class="expertise-content">
+                        <h3>Change Management</h3>
+                        <p>Stakeholder alignment, team enablement, documentation systems, training programs, and transition planning for minimal disruption.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="section-number">03 — VALUES</div>
+            <h2>How We Work</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>We're Direct</h3>
+                    <p>If something isn't working, we'll tell you. If a timeline doesn't make sense, we'll say so. Good relationships are built on honesty, not agreement.</p>
+                </div>
+
+                <div class="value-card">
+                    <h3>Results Matter</h3>
+                    <p>We care about outcomes, not deliverables. Reports and recommendations are only valuable if they actually move the metrics that matter to your business.</p>
+                </div>
+
+                <div class="value-card">
+                    <h3>We Do Our Homework</h3>
+                    <p>Every recommendation we make has a clear rationale backed by data. We don't deal in buzzwords or trends—just what actually works.</p>
+                </div>
+
+                <div class="value-card">
+                    <h3>Built to Last</h3>
+                    <p>Quick fixes create more problems down the line. We build systems designed to perform well over years, not just get you through the next quarter.</p>
+                </div>
+
+                <div class="value-card">
+                    <h3>We Teach as We Go</h3>
+                    <p>The goal is to make ourselves unnecessary. We document everything and train your team thoroughly so you can maintain and improve things on your own.</p>
+                </div>
+
+                <div class="value-card">
+                    <h3>We're Selective</h3>
+                    <p>We keep our client list intentionally small so everyone gets proper attention. If we can't add real value to your project, we'll tell you upfront.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="section-number">04 — TEAM</div>
+            <h2>Who We Are</h2>
+            
+            <div class="team-intro">
+                <p>We're a small team of people who've spent years solving technical problems for organizations at scale. Each of us has worked on the messy, complex stuff—the kind of projects where off-the-shelf solutions don't cut it.</p>
+            </div>
+
+            <p>We keep things lean on purpose. Instead of building a large firm with layers of junior consultants, we work as a tight group of senior practitioners. When you work with us, you're working directly with people who have done this before.</p>
+
+            <p>When a project needs specialized expertise we don't have in-house, we bring in people from our network—data engineers, platform specialists, content strategists—who we've worked with for years and trust completely.</p>
+
+            <p>It's a simple model: experienced people giving strategic guidance, with access to deep technical talent when you need it.</p>
+
+            <div class="section-number" style="margin-top: 4rem;">GLOBAL PRESENCE</div>
+            <h2>Where We Operate</h2>
+            <p>Our core team works from Toronto, Berlin, and Istanbul. This setup gives us good timezone coverage across North America, Europe, and the Middle East, and keeps us close to major business and tech centers.</p>
+            
+            <div class="locations-grid">
+                <div class="location-card">
+                    <div class="city">Toronto</div>
+                    <div class="region">Canada</div>
+                    <div class="timezone">EST / UTC-5</div>
+                </div>
+                <div class="location-card">
+                    <div class="city">Berlin</div>
+                    <div class="region">Germany</div>
+                    <div class="timezone">CET / UTC+1</div>
+                </div>
+                <div class="location-card">
+                    <div class="city">Istanbul</div>
+                    <div class="region">Türkiye</div>
+                    <div class="timezone">TRT / UTC+3</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 3rem;">We also work with contributors around the world when we need specific domain knowledge or regional expertise. It keeps us flexible while staying focused.</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="cta-box">
+                <h3>Let's Talk</h3>
+                <p>If you're dealing with complex digital challenges and need people who understand both the business and the technology, get in touch.</p>
+                <a href="/cdn-cgi/l/email-protection#b3dbd6dfdfdcf3c7d6c0c0d6c1d2d0c7d7dad4dac7d2df9ddcc1d4" class="btn">Start a Conversation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Tesseract Digital
