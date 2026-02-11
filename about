@@ -415,9 +415,9 @@
         <div class="container">
             <a href="/" class="logo">TESSERACT DIGITAL</a>
             <ul>
-                <li><a href="philosophy.html">Philosophy</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="/cdn-cgi/l/email-protection#bcd4d9d0d0d3fcc8d9cfcfd9cedddfc8d8d5dbd5c8ddd092d3cedb">Contact</a></li>
+                <li><a href="https://tesseractdigital.org/approach.html">Our Approach</a></li>
+                <li><a href="https://tesseractdigital.org/about.html">About</a></li>
+                <li><a href="mailto:hello@tesseractdigital.org">Contact</a></li>
             </ul>
         </div>
     </nav>
