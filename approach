@@ -351,8 +351,8 @@
         <div class="container">
             <a href="/" class="logo">TESSERACT DIGITAL</a>
             <ul>
-                <li><a href="https://tesseractdigital.org/approach.html">Our Approach</a></li>
-                <li><a href="https://tesseractdigital.org/about.html">About</a></li>
+                <li><a href="/approach.html">Our Approach</a></li>
+                <li><a href="/about.html">About</a></li>
                 <li><a href="mailto:hello@tesseractdigital.org">Contact</a></li>
             </ul>
         </div>
@@ -489,4 +489,4 @@
 
     <footer>
         <div class="container">
-            <p>© 2024 Tesseract Digital. Established in London. Serving global markets.<
+            <p>© 2024 Tesseract Digital
